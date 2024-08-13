@@ -1,4 +1,4 @@
-package streams.optional;
+package chapter10.streams.optional;
 
 import java.util.Optional;
 import java.util.logging.Logger;
