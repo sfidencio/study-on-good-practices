@@ -27,18 +27,18 @@
 - distinct
 - sorted
 - peek
-  - peek é usado para depurar o stream. Ele permite que você inspecione os elementos do stream sem alterá-los. 
-  - Exemplo: `peek(s -> System.out.println(s))`.
+    - peek é usado para depurar o stream. Ele permite que você inspecione os elementos do stream sem alterá-los.
+    - Exemplo: `peek(s -> System.out.println(s))`.
 - limit
 - skip
 - takeWhile
-  - takeWhile é usado para pegar elementos do stream enquanto a condição especificada for verdadeira. 
-  - Exemplo: `takeWhile(s -> s.compareTo("c") < 0)`.
-  - Qual a diferença entre takeWhile e filter?
     - takeWhile é usado para pegar elementos do stream enquanto a condição especificada for verdadeira.
-    - filter é usado para filtrar elementos do stream com base em uma condição especificada.
+    - Exemplo: `takeWhile(s -> s.compareTo("c") < 0)`.
+    - Qual a diferença entre takeWhile e filter?
+        - takeWhile é usado para pegar elementos do stream enquanto a condição especificada for verdadeira.
+        - filter é usado para filtrar elementos do stream com base em uma condição especificada.
 - dropWhile
-  - dropWhile é usado para descartar elementos do stream enquanto a condição especificada for verdadeira.
+    - dropWhile é usado para descartar elementos do stream enquanto a condição especificada for verdadeira.
 
 ## Qual a diferença entre operações intermediárias e terminais?
 
@@ -117,16 +117,16 @@ List<String> peekedList = list.stream()
 ## Operações terminais - Stream API
 
 - forEach
-  - forEach é usado para iterar sobre os elementos do stream.
+    - forEach é usado para iterar sobre os elementos do stream.
 - collect
-  - collect é usado para coletar os elementos do stream em uma coleção. 
+    - collect é usado para coletar os elementos do stream em uma coleção.
 - toList
-  - Converte o stream em uma lista.
+    - Converte o stream em uma lista.
 - reduce
     - reduce é usado para combinar os elementos de um stream em um único valor.
-      - Ex: soma, multiplicação, concatenação.
-        - Exemplo: `reduce(0, (a, b) -> a + b)`.
-        - Exemplo: `reduce(1, (a, b) -> a * b)`.
+        - Ex: soma, multiplicação, concatenação.
+            - Exemplo: `reduce(0, (a, b) -> a + b)`.
+            - Exemplo: `reduce(1, (a, b) -> a * b)`.
 - count
     - Retorna o número de elementos no stream.
 - min
@@ -150,54 +150,127 @@ List<String> peekedList = list.stream()
 - average
     - Retorna a média de todos os elementos do stream.
 - summaryStatistics
-  - Retorna um objeto que contém várias estatísticas, como a soma, a média, o mínimo, o máximo e o número de elementos no
-    stream.
+    - Retorna um objeto que contém várias estatísticas, como a soma, a média, o mínimo, o máximo e o número de elementos
+      no
+      stream.
 - groupingBy
-  - Agrupa os elementos do stream com base em uma função de agrupamento.
+    - Agrupa os elementos do stream com base em uma função de agrupamento.
 - partitioningBy
-  - Divide os elementos do stream em dois grupos com base em uma condição booleana.
-    - Exemplo: `partitioningBy(s -> s.length() == 1)`.
-    - Exemplo: `partitioningBy(s -> s.length() == 1, Collectors.toList())`.
-    - Exemplo com Map: `partitioningBy(s -> s.length() == 1, Collectors.mapping(s -> s.toUpperCase(), Collectors.toList()))`.
-    - Exemplo completo com Map:
-      - `Map<Boolean, List<String>> partitionedMap = list.stream().collect(Collectors.partitioningBy(s -> s.length() == 1));`. 
+    - Divide os elementos do stream em dois grupos com base em uma condição booleana.
+        - Exemplo: `partitioningBy(s -> s.length() == 1)`.
+        - Exemplo: `partitioningBy(s -> s.length() == 1, Collectors.toList())`.
+        - Exemplo com Map:
+          `partitioningBy(s -> s.length() == 1, Collectors.mapping(s -> s.toUpperCase(), Collectors.toList()))`.
+        - Exemplo completo com Map:
+            -
+            `Map<Boolean, List<String>> partitionedMap = list.stream().collect(Collectors.partitioningBy(s -> s.length() == 1));`.
 - joining
-  - Concatena os elementos do stream em uma única string.
+    - Concatena os elementos do stream em uma única string.
 - counting
-  - Retorna o número de elementos no stream.
+    - Retorna o número de elementos no stream.
 - summingInt
 - Retorna a soma dos valores inteiros no stream.
-  - averagingInt
+    - averagingInt
 - Retorna a média dos valores inteiros no stream.
+
 
 ### forEach
 
-    ```java
-    List<String> list = Arrays.asList("a", "b", "c", "d", "e");
-    list.stream()
+```java
+List<String> list = Arrays.asList("a", "b", "c", "d", "e");
+list.stream()
         .forEach(s -> System.out.println(s));
-    ```
+```
+
+### collect
+
+```java
+List<String> list = Arrays.asList("a", "b", "c", "d", "e");
+List<String> collectedList = list.stream()
+        .collect(Collectors.toList());
+```
+
+### reduce
+
+```java
+List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+int sum = list.stream()
+        .reduce(0, (a, b) -> a + b);
+```
+
+### count
+
+```java
+List<String> list = Arrays.asList("a", "b", "c", "d", "e");
+long count = list.stream()
+        .count();
+```
+
+### min
+
+```java
+List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+int min = list.stream()
+        .min(Comparator.naturalOrder())
+        .get();
+```
+
+### max
+
+```java
+List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+int max = list.stream()
+        .max(Comparator.naturalOrder())
+        .get();
+```
+
 ### anyMatch
 
-    ```java
-    List<String> list = Arrays.asList("a", "b", "c", "d", "e");
-    boolean anyMatch = list.stream()
-        .anyMatch(s -> s.equals("b"));
-    ```
+```java
+List<String> list = Arrays.asList("a", "b", "c", "d", "e");
+boolean anyMatch = list.stream()
+        .anyMatch(s -> s.equals("c"));
+```
 
 ### allMatch
 
-    ```java
-    List<String> list = Arrays.asList("a", "b", "c", "d", "e");
-    boolean allMatch = list.stream()
+```java
+List<String> list = Arrays.asList("a", "b", "c", "d", "e");
+boolean allMatch = list.stream()
         .allMatch(s -> s.length() == 1);
-    ```
+```
+
 ### noneMatch
 
-    ```java
-    List<String> list = Arrays.asList("a", "b", "c", "d", "e");
-    boolean noneMatch = list.stream()
+```java
+List<String> list = Arrays.asList("a", "b", "c", "d", "e");
+boolean noneMatch = list.stream()
         .noneMatch(s -> s.equals("f"));
-    ```   
+```
 
-  
+### findFirst
+
+```java
+List<String> list = Arrays.asList("a", "b", "c", "d", "e");
+String first = list.stream()
+        .findFirst()
+        .get();
+```
+
+### findAny
+
+```java
+List<String> list = Arrays.asList("a", "b", "c", "d", "e");
+String any = list.stream()
+        .findAny()
+        .get();
+```
+
+### toArray
+
+```java
+List<String> list = Arrays.asList("a", "b", "c", "d", "e");
+    
+String[] array = list.stream()
+        .toArray(String[]::new);
+```
