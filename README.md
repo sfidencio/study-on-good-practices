@@ -1,5 +1,5 @@
 ### TODO
 
-- POC Idempotência em APIs RestFull.
-- POC SprigWebFlux
+- POC -> idempotência em APIs RestFull.
+- POC ->  spring-webflux
 
