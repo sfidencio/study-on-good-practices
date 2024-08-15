@@ -7,6 +7,7 @@ spring:
       server:
         git:
           uri: https://github.com/sfidencio/study-on-good-practices.git
+          default-label: master
         bootstrap: true
 server:
   port: 8888
