@@ -1,4 +1,5 @@
 ### TODO
 
-- Implementar Idempotência em APIs RestFull.
+- POC Idempotência em APIs RestFull.
+- POC SprigWebFlux
 
