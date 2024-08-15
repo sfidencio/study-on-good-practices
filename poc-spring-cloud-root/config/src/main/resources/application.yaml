@@ -6,7 +6,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/sfidencio/study-on-good-practices/tree/master/poc-spring-cloud-root/config
+          uri: https://github.com/sfidencio/study-on-good-practices.git
         bootstrap: true
 server:
   port: 8888
