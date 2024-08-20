@@ -1,4 +1,4 @@
-package com.github.sfidencio.productservice.application.dto;
+package com.github.sfidencio.application.dto;
 
 import java.math.BigDecimal;
 

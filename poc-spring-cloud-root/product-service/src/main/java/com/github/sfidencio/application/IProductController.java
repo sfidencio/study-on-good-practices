@@ -1,6 +1,6 @@
-package com.github.sfidencio.productservice.application;
+package com.github.sfidencio.application;
 
-import com.github.sfidencio.productservice.application.dto.ProductRequestDTO;
+import com.github.sfidencio.application.dto.ProductRequestDTO;
 import org.springframework.http.ResponseEntity;
 
 public interface IProductController {
