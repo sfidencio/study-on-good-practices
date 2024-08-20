@@ -274,3 +274,13 @@ List<String> list = Arrays.asList("a", "b", "c", "d", "e");
 String[] array = list.stream()
         .toArray(String[]::new);
 ```
+
+## Lambda Expressions
+
+- Lambda expressions são uma nova característica introduzida no Java 8 que permite escrever código mais conciso e
+  legível.
+  - Exemplo: `(a, b) -> a + b`.
+  - Exemplo: `() -> System.out.println("Hello, World!")`.
+  - Exemplo: `(int a) -> a * a`.
+  - Exemplo: `(String s) -> s.toUpperCase()`.
+- Lambda expressions são usadas para criar funções anônimas.
