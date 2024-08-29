@@ -1,5 +1,5 @@
 ### TODO
 
-- POC -> idempotência em APIs RestFull.
-- POC ->  spring-webflux
+- Generics em JAVA
+- Idempotência em APIs RestFull.
 
